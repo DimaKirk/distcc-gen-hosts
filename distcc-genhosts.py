@@ -26,11 +26,11 @@ if len(workpath) > 0:
 print('workpath=\'' + workpath + '\'')
 exclude_hosts = []
 if os.path.exists(workpath + "exclude.hosts"):
-	for line in open(workpath + "exclude.hosts", "r").read().split("\n"):
+	for line in open(workpath + "exclude.hosts"):
 		exclude_hosts.append(line)
 
 hosts = []
-for line in open(workpath + "cluster.hosts", "r").read().split("\n"):
+for line in open(workpath + "cluster.hosts"):
 	if len(line) < 1:
 		continue
 	host = line.split('/')[0]
