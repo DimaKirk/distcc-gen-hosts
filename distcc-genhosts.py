@@ -13,14 +13,12 @@ def CheckDistccPort(host):
         except:
                 return False
 
-pump = False
-if '--pump' in sys.argv:
-	pump = True
+pump = '--pump' in sys.argv
+if pump:
 	print("pump mode on")
 
-
 workpath = os.path.dirname( sys.argv[0] )
-print('workpath=\'' + workpath + '\'')
+print("workpath = '{}'".format(workpath))
 
 try:
 	exclude_hosts = [line.strip() for line in open(os.path.join(workpath, "exclude.hosts"))]
