@@ -27,6 +27,7 @@ exclude_hosts = []
 
 if os.path.exists(workpath + "exclude.hosts"):
 	for line in open(workpath + "exclude.hosts"):
+		line = line.strip()
 		exclude_hosts.append(line)
 
 hosts = []
