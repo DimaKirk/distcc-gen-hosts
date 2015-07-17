@@ -31,6 +31,7 @@ if os.path.exists(workpath + "exclude.hosts"):
 
 hosts = []
 for line in open(workpath + "cluster.hosts"):
+	line = line.strip()
 	if len(line) < 1:
 		continue
 	host = line.split('/')[0]
