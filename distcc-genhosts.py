@@ -14,10 +14,9 @@ def CheckDistccPort(host):
                 return False
 
 pump = False
-for param in sys.argv:
-	if param == "--pump":
-		pump = True
-		print("pump mode on")
+if '--pump' in sys.argv:
+	pump = True
+	print("pump mode on")
 
 
 workpath = os.path.dirname( sys.argv[0] )
@@ -25,6 +24,7 @@ if len(workpath) > 0:
 	workpath = workpath + '/'
 print('workpath=\'' + workpath + '\'')
 exclude_hosts = []
+
 if os.path.exists(workpath + "exclude.hosts"):
 	for line in open(workpath + "exclude.hosts"):
 		exclude_hosts.append(line)
