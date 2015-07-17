@@ -20,18 +20,15 @@ if '--pump' in sys.argv:
 
 
 workpath = os.path.dirname( sys.argv[0] )
-if len(workpath) > 0:
-	workpath = workpath + '/'
 print('workpath=\'' + workpath + '\'')
-exclude_hosts = []
 
-if os.path.exists(workpath + "exclude.hosts"):
-	for line in open(workpath + "exclude.hosts"):
-		line = line.strip()
-		exclude_hosts.append(line)
+try:
+	exclude_hosts = [line.strip() for line in open(os.path.join(workpath, "exclude.hosts"))]
+except IOError:
+	exclude_hosts = []
 
 hosts = []
-for line in open(workpath + "cluster.hosts"):
+for line in open(os.path.join(workpath, "cluster.hosts")):
 	line = line.strip()
 	if len(line) < 1:
 		continue
