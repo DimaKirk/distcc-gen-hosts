@@ -14,7 +14,7 @@ while (i >= 0):
 	i = i - 1
 if deplocation is None:
 	exit(0)
-objdir = '/'.join(deplocation.split('/')[:-2]) + '/.obj'
+objdir = '/'.join(deplocation.split('/')[:-2]) + '/.obj/'
 depfile = open(deplocation)
 lines = depfile.readlines()
 depfile.close()
