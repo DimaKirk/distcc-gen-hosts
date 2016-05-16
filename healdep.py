@@ -3,7 +3,7 @@ import sys
 import subprocess
 args = sys.argv[1:]
 #print args
-subprocess.check_call(args)
+ret = subprocess.call(args)
 
 i = len(args) - 1
 deplocation = None
@@ -25,4 +25,5 @@ depfile = open(deplocation, 'w')
 for line in lines:
 	depfile.write(line)
 depfile.close()
-#subprocess.call(['head', deplocation])
+#subprocess.call(['head', "-n1", deplocation])
+exit(ret)
