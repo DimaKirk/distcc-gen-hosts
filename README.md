@@ -23,7 +23,7 @@ python /root/src/distcc-gen-hosts/distcc-genhosts.py
 ```
 python /root/src/distcc-gen-hosts/distcc-genhosts.py --pump
 ```
-# компиляция с distcc
+# Компиляция с distcc
 
 COMPILER='/root/src/distcc-gen-hosts/healdep.py distcc clang' CCOMPILER='/root/src/distcc-gen-hosts/healdep.py distcc clang++' make -j20
 
