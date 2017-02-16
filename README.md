@@ -15,7 +15,7 @@ rm -f tmp.cron
 
 Если ваш ip есть в cluster.hosts, то создайте файл exclude.hosts с ip адресами которые следует исключить из кластера. Разделителем служит перевод строки.
 
-#Использование
+# Использование
 ```
 python /root/src/distcc-gen-hosts/distcc-genhosts.py
 ```
@@ -23,3 +23,8 @@ python /root/src/distcc-gen-hosts/distcc-genhosts.py
 ```
 python /root/src/distcc-gen-hosts/distcc-genhosts.py --pump
 ```
+# компиляция с distcc
+
+COMPILER='/root/src/distcc-gen-hosts/healdep.py distcc clang' CCOMPILER='/root/src/distcc-gen-hosts/healdep.py distcc clang++' make -j20
+
+Для чего здесь /root/src/distcc-gen-hosts/healdep.py? При компиляции создаются неправильные .Po файлы. В них неверный путь и иногда при изменении заголовочного файла компилятор не понимает, что нужно пересобрать объект. healdep.py исправит пути и все будет хорошо.
