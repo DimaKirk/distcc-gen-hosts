@@ -25,6 +25,6 @@ python /root/src/distcc-gen-hosts/distcc-genhosts.py --pump
 ```
 # Компиляция с distcc
 
-COMPILER='/root/src/distcc-gen-hosts/healdep.py distcc clang' CCOMPILER='/root/src/distcc-gen-hosts/healdep.py distcc clang++' make -j20
+COMPILER='/root/src/distcc-gen-hosts/healdep.py distcc clang++' CCOMPILER='/root/src/distcc-gen-hosts/healdep.py distcc clang' make -j20
 
 Для чего здесь /root/src/distcc-gen-hosts/healdep.py? При компиляции создаются неправильные .Po файлы. В них неверный путь и иногда при изменении заголовочного файла компилятор не понимает, что нужно пересобрать объект. healdep.py исправит пути и все будет хорошо.
