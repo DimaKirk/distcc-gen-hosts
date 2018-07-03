@@ -3,11 +3,11 @@ import socket
 import os
 import sys
 
-def CheckDistccPort(host):
+def CheckDistccPort(host, port):
 	try:
 		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		s.settimeout(0.5)
-		s.connect((host, 3632))
+		s.connect((host, port))
 		s.close()
                 return True
         except:
@@ -26,15 +26,23 @@ except IOError:
 	exclude_hosts = []
 
 hosts = []
-for line in open(os.path.join(workpath, "cluster.hosts")):
+filename = "cluster.hosts"
+if "--file" in sys.argv:
+	filename = sys.argv[sys.argv.index("--file") + 1]
+	
+for line in open(os.path.join(workpath, filename)):
 	line = line.strip()
 	if len(line) < 1:
 		continue
+	port = 3632
 	host = line.split('/')[0]
+	if ":" in host:
+		port = int(host .split(':')[1])
+		host = host .split(':')[0]
 	if host in exclude_hosts:
 		print('exclude host ' + host)
 		continue
-	connect = CheckDistccPort(host)
+	connect = CheckDistccPort(host, port)
 	print(line + ' ' + str(connect))
 	if connect:
 		if pump:
