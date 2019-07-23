@@ -48,5 +48,5 @@ for line in open(os.path.join(workpath, filename)):
 		if pump:
 			line = line + ',cpp'
 		hosts.append(line + ',lzo')
-		hosts.append("\n")
+hosts.append("\n")
 open('/etc/distcc/hosts', 'w').write(' '.join(hosts))
